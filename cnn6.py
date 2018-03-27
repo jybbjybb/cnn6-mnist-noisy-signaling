@@ -169,6 +169,22 @@ class cnn6:
 
         layers_clean = [conv1_clean, conv2_clean, conv3_clean, conv4_clean, fc1_clean, logits_clean]
         layers_noisy = [conv1_noisy, conv2_noisy, conv3_noisy, conv4_noisy, fc1_noisy, logits_noisy]
+        
+        # calculate signal power
+        num_signals = []
+        power = []
+        e_power = []
+        for i in range(len(layers_clean)):
+            layer = layers_clean[i]
+            this_power = np.sum(np.square(layer))
+            power.append(this_power)
+            num_signals.append(layer.size)
+            e_power.append(this_power/layer.size)
+            print("Expected signal power:{0} of layer {1}".format(e_power[i],i))
+
+        signal_power = sum(power)/sum(num_signals)
+        print("Expected signal power overall: {0}".format(signal_power))
+
         self.plot_signal_histogram(layers_clean, layers_noisy, accuracy)
         
         if show_feature_maps and len(data)==1:
