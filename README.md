@@ -1,9 +1,12 @@
 # cnn6-mnist-noisy-signaling
-# A 6-layer Convolutional neural nets class for MNIST recognition
-# Support training, prediction, and extract features maps from the tensor graph
-# Support saving/loading the model (i.e., all weights) to/from numpy arrays (.npy files)
-# Add Gaussian noise after each matrix multiplication (i.e., after each signal coming out of convolutional and dense layers)
+
+A 6-layer Convolutional neural nets class for MNIST recognition
+Support training, prediction, and extract features maps from the tensor graph
+Support saving/loading the model (i.e., all weights) to/from numpy arrays (.npy files)
+Add Gaussian noise after each matrix multiplication (i.e., after each signal coming out of convolutional and dense layers)
+
 # Example usage of training from scratch
+
 model = cnn6()  
 model.build()
 model.fit(X_train=mnist.train.images,
